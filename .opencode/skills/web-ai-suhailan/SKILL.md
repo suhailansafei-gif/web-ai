@@ -1,5 +1,5 @@
 ---
-name: web-ai-suhailan
+name: web-ai-suhailan-ci4
 description: Use when generating, configuring, running, or deploying any code in this project. Enforces the CodeIgniter 4 MVC tech stack, XAMPP localhost compatibility, and the dynamic MySQL table prefix naming strategy.
 ---
 
@@ -64,3 +64,22 @@ Manages MySQL database design to avoid table conflicts.
 - **Normalization**: Derive the prefix from the project folder name and replace any spaces or hyphens (`-`) with underscores (`_`), e.g. folder `web-ai` becomes prefix `web_ai_`, folder `my project` becomes `my_project_`. This keeps table names valid in MySQL without quoting.
 - All tables MUST use a prefix generated from the project name to avoid table name collisions on localhost.
 - Use basic CodeIgniter 4 Models (using the `$table` variable scheme with the relevant prefix).
+
+## Google Authentication & Login
+
+Rules for login integration with Google OAuth 2.0.
+
+- If a user account/credentials table for login already exists, REUSE the same table — do not create a new one.
+- Users MUST be able to log in using manual password input for any email account already registered.
+- Users MUST also be able to choose Google Authentication login using the same email, provided that email is registered with Google.
+- When generating the application, include the following Google OAuth 2.0 settings in the `.env` file:
+
+```env
+# Google OAuth 2.0 Configuration
+# Get these from Google Cloud Console: https://console.cloud.google.com/apis/credentials
+googleAuth.clientId = 'your_google_client_id'
+googleAuth.clientSecret = 'your_google_secret_key'
+googleAuth.redirectUri = '{URL}/auth/callback'
+googleAuth.allowedDomain = ''
+googleAuth.autoCreateAccount = true
+```

@@ -114,3 +114,34 @@ googleAuth.redirectUri = '{URL}/auth/callback'
 googleAuth.allowedDomain = ''
 googleAuth.autoCreateAccount = true
 ```
+
+## Standard Login (Email & Password) + Email Delivery
+
+Rules for the non-Google login flow and automated email delivery.
+
+- If the login form is NOT Google authentication, create a STANDARD login flow with these pages:
+  - **Login** — email + password sign-in form.
+  - **Register** — sign-up form; validate that the email is unique and store the password hashed (never plaintext).
+  - **Forgot Password** — form that accepts the registered email and sends a password-reset link/token.
+- REUSE the existing user/account table (the same table used by Google authentication).
+- Send registration verification and password-reset emails using the CodeIgniter 4 core `Email` library.
+- Deliver mail through **Gmail SMTP** using the account owner's **Google App Password** (see notes in the `.env` block below).
+- Create the view files at `app/Views/auth/login.php`, `app/Views/auth/register.php`, and `app/Views/auth/forgot_password.php` (these are reachable without login, so they use the public layout).
+- Include the following email settings in the `.env` file:
+
+```env
+# Email (Gmail SMTP)
+email.protocol       = smtp
+email.smtpHost       = smtp.gmail.com
+email.smtpPort       = 587
+email.smtpUser       = 'your.email@gmail.com'
+# Get your 16-digit Google App Password here: https://myaccount.google.com/apppasswords
+# (enable 2-Step Verification on the Google account first).
+# The App Password is generated in 4 blocks of 4 characters, e.g. 'abcd efgh ijkl mnop'.
+# The spaces/dashes may be removed OR kept - Gmail only checks the 16 characters, both forms work.
+email.smtpPass       = 'your_16_digit_app_password'
+email.smtpCrypto     = tls
+# email.fromEmail MUST be the SAME address as email.smtpUser above (Gmail enforces this for SMTP auth).
+email.fromEmail      = 'your.email@gmail.com'
+email.fromName       = '{Project-Name}'
+```

@@ -58,7 +58,19 @@ Use only CodeIgniter 4 core features:
 - Add page-specific content only inside its own `section`; never duplicate header/nav/footer markup across views.
 - Routes for pages that require login MUST point to views that extend the authenticated layout and MUST be protected by a login/session filter.
 - **REQUIRED**: Every view file that can only be reached after login MUST use `layouts/auth.php` (extend it via `$this->extend('layouts/auth')`). Do NOT use `layouts/public.php` for any authenticated page.
-- 
+
+### Table Display
+
+- For any table display, use a table library (e.g. **DataTables**) BY DEFAULT.
+- Enable the following features by default:
+  - **Pagination** (paging)
+  - **Export to Excel** (e.g. DataTables Buttons `excelHtml5`)
+  - **Export to PDF** (e.g. DataTables Buttons `pdfHtml5`)
+- The table library and ALL its assets (DataTables core, Buttons, JSZip, pdfmake, and related CSS/JS) MUST be downloaded and stored in the project's local `public` folder — everything stays local.
+- Do NOT load the table library or export plugins from any CDN.
+- Reference the table assets using local paths from `public` (e.g. `/public/plugins/jquery.dataTables.min.js`, `/public/plugins/dataTables.bootstrap5.min.js`).
+- Initialize the table in a DOM-ready (`$(document).ready`) script and wire the export buttons (Excel/PDF) into the toolbar.
+
 ### Strict Prohibitions
 
 - **PROHIBITED** from using modern frontend frameworks (React, Vue, Angular).

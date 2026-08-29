@@ -55,6 +55,17 @@ The system MUST run directly on a local XAMPP environment.
 - Use base CI4 `.env` settings appropriate for a local/development environment.
 - Ensure the file structure and routing work without requiring special build commands.
 
+### Base Page Layouts
+
+- Use shared base layouts for ALL view files (templates with common header, navigation, and footer).
+- Maintain TWO distinct base layouts:
+  1. **Public layout** — for the general/landing pages that anyone can access without logging in (e.g. `app/Views/layouts/public.php`).
+  2. **Authenticated layout** — for all pages that can only be reached after login (e.g. `app/Views/layouts/auth.php`); it must include authenticated navigation and session-based access checks.
+- Each page view extends the appropriate base layout using CodeIgniter 4 core layout features (`$this->extend(...)` / `$this->section(...)`), or via a shared header/footer include if layouts are not used.
+- Add page-specific content only inside its own `section`; never duplicate header/nav/footer markup across views.
+- Routes for pages that require login MUST point to views that extend the authenticated layout and MUST be protected by a login/session filter.
+- **REQUIRED**: Every view file that can only be reached after login MUST use `layouts/auth.php` (extend it via `$this->extend('layouts/auth')`). Do NOT use `layouts/public.php` for any authenticated page.
+  
 ## Dynamic Prefix MySQL Naming Strategy
 
 Manages MySQL database design to avoid table conflicts.

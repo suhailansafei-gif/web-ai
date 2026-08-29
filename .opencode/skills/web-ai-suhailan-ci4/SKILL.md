@@ -40,6 +40,25 @@ Use only CodeIgniter 4 core features:
 - CSS and Bootstrap
 - jQuery
 
+### Local Assets (No CDN)
+
+- ALL CSS, jQuery, Bootstrap and any frontend library files MUST be downloaded and stored locally, then loaded from the project's local `public` folder.
+- Do NOT use external CDN links (e.g. `cdn.jsdelivr.net`, `stackpath.bootstrapcdn.com`, `cdnjs.cloudflare.com`) in any view file.
+- Reference assets using local paths from `public` (e.g. `/public/css/style.css`, `/public/js/jquery.min.js`).
+- Ensure all asset files (CSS, JS, fonts, images) are actually present in the `public` folder.
+- Only exception is the browser's own built-ins (no network fetch required by the app at runtime for normal page loads).
+
+### Base Page Layouts
+
+- Use shared base layouts for ALL view files (templates with common header, navigation, and footer).
+- Maintain TWO distinct base layouts:
+  1. **Public layout** — for the general/landing pages that anyone can access without logging in (e.g. `app/Views/layouts/public.php`).
+  2. **Authenticated layout** — for all pages that can only be reached after login (e.g. `app/Views/layouts/auth.php`); it must include authenticated navigation and session-based access checks.
+- Each page view extends the appropriate base layout using CodeIgniter 4 core layout features (`$this->extend(...)` / `$this->section(...)`), or via a shared header/footer include if layouts are not used.
+- Add page-specific content only inside its own `section`; never duplicate header/nav/footer markup across views.
+- Routes for pages that require login MUST point to views that extend the authenticated layout and MUST be protected by a login/session filter.
+- **REQUIRED**: Every view file that can only be reached after login MUST use `layouts/auth.php` (extend it via `$this->extend('layouts/auth')`). Do NOT use `layouts/public.php` for any authenticated page.
+- 
 ### Strict Prohibitions
 
 - **PROHIBITED** from using modern frontend frameworks (React, Vue, Angular).
@@ -54,17 +73,6 @@ The system MUST run directly on a local XAMPP environment.
 - **Access URL**: `http://localhost/{project-folder-name}`
 - Use base CI4 `.env` settings appropriate for a local/development environment.
 - Ensure the file structure and routing work without requiring special build commands.
-
-### Base Page Layouts
-
-- Use shared base layouts for ALL view files (templates with common header, navigation, and footer).
-- Maintain TWO distinct base layouts:
-  1. **Public layout** — for the general/landing pages that anyone can access without logging in (e.g. `app/Views/layouts/public.php`).
-  2. **Authenticated layout** — for all pages that can only be reached after login (e.g. `app/Views/layouts/auth.php`); it must include authenticated navigation and session-based access checks.
-- Each page view extends the appropriate base layout using CodeIgniter 4 core layout features (`$this->extend(...)` / `$this->section(...)`), or via a shared header/footer include if layouts are not used.
-- Add page-specific content only inside its own `section`; never duplicate header/nav/footer markup across views.
-- Routes for pages that require login MUST point to views that extend the authenticated layout and MUST be protected by a login/session filter.
-- **REQUIRED**: Every view file that can only be reached after login MUST use `layouts/auth.php` (extend it via `$this->extend('layouts/auth')`). Do NOT use `layouts/public.php` for any authenticated page.
   
 ## Dynamic Prefix MySQL Naming Strategy
 

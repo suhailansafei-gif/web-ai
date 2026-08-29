@@ -123,7 +123,8 @@ Rules for the non-Google login flow and automated email delivery.
   - **Login** — email + password sign-in form.
   - **Register** — sign-up form; validate that the email is unique and store the password hashed (never plaintext).
   - **Forgot Password** — form that accepts the registered email and sends a password-reset link/token.
-- REUSE the existing user/account table (the same table used by Google authentication).
+- **RESTRICTION**: Do NOT add Google authentication login by default when creating the standard (Email & Password) login flow. Only add Google login if the user explicitly requests it.
+- REUSE the existing user/account table if the table already exits (the same table used by Google authentication).
 - Send registration verification and password-reset emails using the CodeIgniter 4 core `Email` library.
 - Deliver mail through **Gmail SMTP** using the account owner's **Google App Password** (see notes in the `.env` block below).
 - Create the view files at `app/Views/auth/login.php`, `app/Views/auth/register.php`, and `app/Views/auth/forgot_password.php` (these are reachable without login, so they use the public layout).

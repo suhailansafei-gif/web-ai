@@ -1,1 +1,1 @@
-This is to set open code to use CodeIgniter 4 as the framework. Also it will automatically allow changes and run /compact command if the usage if above 50%.
+This is file setup for Web-AI workshop conducted by Dr. Suhailan Safei. It will set opencode to use CodeIgniter 4 as the main framework and running automatically using XAMPP localt environment. It will also automatically "allow changes" without the need to ask permission,  and run "/compact" command to avoid opencode restriction if the usage is above 50%.

@@ -1,6 +1,6 @@
 ---
 name: web-ai-suhailan-ci4
-description: Use when the user asks to generate, build, modify, configure, run, debug, or deploy ANY code in this project, including the web static - a CodeIgniter 4 (CI4) MVC web app on XAMPP localhost with MySQL. Triggers on requests involving; controllers, models, views, routes, layouts (public/auth), forms, login/register/forgot-password, Google OAuth login, DataTables with Excel/PDF export, database tables/schema, .env settings, or any .php work here. Enforces CI4 core MVC, local assets (no CDN, DataTables from public), XAMPP localhost (`localhost/<project-folder>`), and dynamic MySQL table prefix naming (`{folder}_`).
+description: Use when the user asks to generate, build, modify, configure, run, debug, or deploy ANY code in this project - a CodeIgniter 4 (CI4) MVC web app on XAMPP localhost with MySQL. Triggers on requests involving; controllers, models, views, routes, layouts (public/auth), forms, login/register/forgot-password, Google OAuth login, DataTables with Excel/PDF export, database tables/schema, .env settings, or any .php work here. TRIGGERS ALWAYS on "web static", "static page(s)", "landing page", "homepage", "static HTML page", "web page", "page(s)", or any UI/layout request, even when NOT explicitly CI4 - ALL of it MUST be built inside the CI4 structure as a view served through a Controller/Route (never standalone HTML). Enforces CI4 core MVC, local assets (no CDN, DataTables from public), XAMPP localhost (`localhost/<project-folder>`), and dynamic MySQL table prefix naming (`{folder}_`).
 ---
 
 # Project Rules
@@ -47,7 +47,6 @@ Use only CodeIgniter 4 core features:
 - Do not apply CSRF protection for all forms EXCEPT for explicitly required by the user. However for login related forms such as login form and register new user form should always protected with CSRF.
 
 ### Local Assets (No CDN)
-
 - ALL CSS, jQuery, Bootstrap and any frontend library files MUST be downloaded and stored locally, then loaded from the project's local `public` folder.
 - Download all required bootstrap icons.
 - Do NOT use external CDN links (e.g. `cdn.jsdelivr.net`, `stackpath.bootstrapcdn.com`, `cdnjs.cloudflare.com`) in any view file.
@@ -83,6 +82,14 @@ Use only CodeIgniter 4 core features:
 - **PROHIBITED** from using modern frontend frameworks (React, Vue, Angular).
 - **PROHIBITED** from using Node.js or npm/build-tool-based environments.
 - **PROHIBITED** from using complex architectures such as Microservices, Repository/Service Pattern.
+
+## Mandatory CI4 Structure for ALL Pages (Including Static)
+
+- **ALL** web pages, "web static", landing pages, homepages, and any UI/page request MUST be built **inside the CodeIgniter 4 MVC structure**, even if the user only asks for a simple/static page. This rule applies to every request.
+- Every page MUST be implemented as a CI4 **view** under `app/Views/` (in the appropriate folder), plus a **Controller** method and a matching **Route** in `app/Config/Routes.php` to serve it.
+- Every view MUST extend the correct base layout (`layouts/public` for open pages, `layouts/auth` for pages behind login) using `$this->extend(...)` / `$this->section(...)`.
+- **PROHIBITED** from outputting standalone `.html` files, inline-only HTML, or raw static markup that bypasses the CI4 structure. Never create a page that is not routed and rendered through a CI4 controller/view.
+- Assets are always served from the local `public` folder (see "Local Assets (No CDN)").
 
 ## Localhost & XAMPP Compatibility
 

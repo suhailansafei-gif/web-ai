@@ -143,6 +143,7 @@ If the "forgot password" and "new user registration" is required to be validated
   - **Register** — sign-up form with full name, email and phone number(optional); Validate that the email is unique. Sends a register account link/token. Once the link was clicked, asked for the password input. Store password in md5 hashed (never plaintext). Use CSRF protection.
   - **Forgot Password** — form that accepts the registered email and sends a password-reset link/token.
 - **RESTRICTION**: Do NOT add Google authentication login by default when creating the standard (Email & Password) login flow. Only add Google login if the user explicitly requests it.
+- Ask the "user types/levels" for the login if not specified. Create only page with "Home" and "Edit Profile" menu. Create simple landing page with unique color schema that differentiate the user type/level.
 - Send registration verification and password-reset emails using the CodeIgniter 4 core `Email` library.
 - Deliver mail through **Gmail SMTP** using the account owner's **Google App Password** (see notes in the `.env` block below).
 - Create the view files at `app/Views/auth/login.php`, `app/Views/auth/register.php`, and `app/Views/auth/forgot_password.php` (these are reachable without login, so they use the public layout).

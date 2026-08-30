@@ -43,6 +43,7 @@ Use only CodeIgniter 4 core features:
 ### Local Assets (No CDN)
 
 - ALL CSS, jQuery, Bootstrap and any frontend library files MUST be downloaded and stored locally, then loaded from the project's local `public` folder.
+- Download all required bootstrap icons.
 - Do NOT use external CDN links (e.g. `cdn.jsdelivr.net`, `stackpath.bootstrapcdn.com`, `cdnjs.cloudflare.com`) in any view file.
 - Reference assets using local paths from `public` (e.g. `/public/css/style.css`, `/public/js/jquery.min.js`).
 - Ensure all asset files (CSS, JS, fonts, images) are actually present in the `public` folder.

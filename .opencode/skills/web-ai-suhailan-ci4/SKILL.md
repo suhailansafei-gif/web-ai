@@ -137,7 +137,7 @@ Rules for the non-Google login flow with no email validation.
 
 - If the login form is NOT Google authentication, create a STANDARD login flow with these pages:
   - **Login** — email + password sign-in form. Use CSRF protection.
-  - **Register** — sign-up form with full name, phone number, username and password; Store password in md5 hashed (never plaintext). Use CSRF protection.
+  - **Register** — sign-up form with full name, phone number, username and password; Store password in md5 hashed (never plaintext). Use CSRF protection. Use "alpha_numeric_dash" with at least 3 characters for password validation.
   - **Forgot Password** — No need to add.
 - **RESTRICTION**: Do NOT add Google authentication login by default when creating the standard (Email & Password) login flow. Only add Google login if the user explicitly requests it.
 - Ask the "user types/levels" for the login if not specified. Create only page with "Home" and "Edit Profile" menu. Create simple landing page with unique color schema that differentiate the user type/level.

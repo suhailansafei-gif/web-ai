@@ -42,7 +42,7 @@ Use only CodeIgniter 4 core features:
 - jQuery
 
 ### Form Handling
-- Set to uppercase comparison for all conditions that retrieve the CI4 getMethod()
+- Set to uppercase comparison for all conditions that retrieve the CI4 getMethod() function.
 - Do not apply CSRF protection for all forms EXCEPT for explicitly required by the user. However for login related forms such as login form and register new user form should always protected with CSRF.
 
 ### Local Assets (No CDN)

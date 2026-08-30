@@ -42,11 +42,32 @@ Use only CodeIgniter 4 core features:
 - Do not create "contact" form by default.
 
 ### Local Assets (No CDN)
-- ALL CSS, jQuery, Bootstrap and any frontend library files MUST be downloaded and stored locally, then loaded from the project's local `public` folder.
-- Download all required bootstrap icons.
+- ALL CSS, jQuery, Bootstrap, CDN, fonts and any frontend library files MUST be loaded from the existing project's local `public` folder.
+  - public/css/bootstrap.min.css
+  - public/css/bootstrap-icons.min.css
+  - public/css/bootstrap.min.css.map
+  - public/css/buttons.bootstrap5.min.css
+  - public/css/dataTables.bootstrap5.min.css
+  - public/js/jquery.min.js
+  - public/js/bootstrap.bundle.min.js
+  - public/js/bootstrap.bundle.min.js.map
+  - public/js/buttons.bootstrap5.min.js
+  - public/js/buttons.html5.min.js
+  - public/js/dataTables.bootstrap5.min.js
+  - public/js/dataTables.buttons.min.js
+  - public/js/jquery.dataTables.min.js
+  - public/js/jszip.min.js
+  - public/js/pdfmake.min.js
+  - public/js/vfs_fonts.js
+  - public/fonts/bootstrap-icons.woff
+  - public/fonts/bootstrap-icons.woff2
+  - public/fonts/roboto-latin-400-normal.woff2
+  - public/fonts/roboto-latin-500-normal.woff2
+  - public/fonts/roboto-latin-700-normal.woff2
+  - public/fonts/roboto-latin-900-normal.woff2
 - Do NOT use external CDN links (e.g. `cdn.jsdelivr.net`, `stackpath.bootstrapcdn.com`, `cdnjs.cloudflare.com`) in any view file.
-- Reference assets using local paths from `public` (e.g. `/public/css/style.css`, `/public/js/jquery.min.js`).
-- Ensure all asset files (CSS, JS, fonts, images) are actually present in the `public` folder.
+- Reference assets using local paths from `public` (e.g. `/public/css/style.css`, `/public/js/jquery.min.js`,`/public/fonts/bootstrap-icons.woff`).
+- Ensure all asset files (CSS, JS, fonts, images) are actually present in the `public` folder. If the file is missing, download all the files and store it locally.
 - Only exception is the browser's own built-ins (no network fetch required by the app at runtime for normal page loads).
 
 ### Base Page Layouts

@@ -13,12 +13,6 @@ All generated code MUST comply with the following rules.
 - Do NOT wait for or ask user permission before making edits, creating files, or running commands.
 - Implement the requested changes automatically, then report what was done.
 
-### Context Management
-
-- Monitor conversation usage/context size.
-- When usage reaches approximately 50%, proactively inform the user to run `/compact` to keep the session efficient (the agent cannot execute `/compact` itself; if auto-compaction is enabled, it will trigger automatically).
-- Capture and report the time spent for each responses completion.
-  
 ## Core Architecture & Tech Stack
 
 ### Framework

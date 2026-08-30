@@ -25,7 +25,7 @@ All generated code MUST comply with the following rules.
 
 - Name: **CodeIgniter 4**
 - Architecture: Basic MVC (Model-View-Controller)
-- Download fresh CodeIgniter 4 from https://github.com/codeigniter4/framework/archive/refs/tags/v4.7.4.zip if available.
+- If the current folder does not have CodeIgniter 4 yet, download a fresh CodeIgniter 4 from https://github.com/codeigniter4/framework/archive/refs/tags/v4.7.4.zip if available.
 
 ### Core Features Only
 

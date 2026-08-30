@@ -17,7 +17,7 @@ All generated code MUST comply with the following rules.
 
 - Monitor conversation usage/context size.
 - When usage reaches approximately 50%, proactively inform the user to run `/compact` to keep the session efficient (the agent cannot execute `/compact` itself; if auto-compaction is enabled, it will trigger automatically).
-- Capture and report the spent time each time the prompt completed the responses.
+- Capture and report the time spent for each responses completion.
   
 ## Core Architecture & Tech Stack
 

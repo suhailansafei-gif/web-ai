@@ -45,6 +45,7 @@ Use only CodeIgniter 4 core features:
 ### Form Handling
 - Set to uppercase comparison for all conditions that retrieve the CI4 getMethod() function.
 - Do not apply CSRF protection for all forms EXCEPT for explicitly required by the user. However for login related forms such as login form and register new user form should always protected with CSRF.
+- Do not create "contact" form by default.
 
 ### Local Assets (No CDN)
 - ALL CSS, jQuery, Bootstrap and any frontend library files MUST be downloaded and stored locally, then loaded from the project's local `public` folder.
@@ -142,9 +143,9 @@ Rules for the non-Google login flow with no email validation.
 - Ask the "user types/levels" for the login if not specified. Create only page with "Home" and "Edit Profile" menu. Create simple landing page with unique color schema that differentiate the user type/level.
 
 
-## Standard Login with Google Email Validation
+## Standard Login with Email Validation
 
-If the "forgot password" and "new user registration" is required to be validated with email, use the following rules. Remove any existing "standard login (Email & Password)" controllers and views.
+If the "forgot password" and "new user registration" is required to be validated with real email, use the following rules. Remove any existing "standard login (Email & Password)" controllers and views.
 
 - If the login form is NOT Google authentication, create a STANDARD login flow with these pages:
   - **Login** — email + password sign-in form. Use CSRF protection.

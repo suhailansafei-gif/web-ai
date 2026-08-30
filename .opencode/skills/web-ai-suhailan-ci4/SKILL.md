@@ -85,6 +85,7 @@ The system MUST run directly on a local XAMPP environment.
 - **Access URL**: `http://localhost/{project-folder-name}`
 - Use base CI4 `.env` settings appropriate for a local/development environment.
 - Ensure the file structure and routing work without requiring special build commands.
+- Set .htaccess at the root folder to `public` folder
   
 ## Dynamic Prefix MySQL Naming Strategy
 

@@ -122,13 +122,24 @@ googleAuth.allowedDomain = ''
 googleAuth.autoCreateAccount = true
 ```
 
-## Standard Login (Email & Password) + Email Delivery
+## Standard Login (Email & Password)
 
-Rules for the non-Google login flow and automated email delivery.
+Rules for the non-Google login flow with no email validation.
 
 - If the login form is NOT Google authentication, create a STANDARD login flow with these pages:
   - **Login** — email + password sign-in form. Use CSRF protection.
-  - **Register** — sign-up form with full name, email and phone number(optional); Validate that the email is unique. Sends a register account link/token, and asked the password input. Store password in md5 hashed (never plaintext). Use CSRF protection.
+  - **Register** — sign-up form with full name, phone number, username and password; Store password in md5 hashed (never plaintext). Use CSRF protection.
+  - **Forgot Password** — No need to add.
+- **RESTRICTION**: Do NOT add Google authentication login by default when creating the standard (Email & Password) login flow. Only add Google login if the user explicitly requests it.
+
+
+## Standard Login with Google Email Validation
+
+If the "forgot password" and "new user registration" is required to be validated with email, use the following rules. Remove any existing "standard login (Email & Password)" controllers and views.
+
+- If the login form is NOT Google authentication, create a STANDARD login flow with these pages:
+  - **Login** — email + password sign-in form. Use CSRF protection.
+  - **Register** — sign-up form with full name, email and phone number(optional); Validate that the email is unique. Sends a register account link/token. Once the link was clicked, asked for the password input. Store password in md5 hashed (never plaintext). Use CSRF protection.
   - **Forgot Password** — form that accepts the registered email and sends a password-reset link/token.
 - **RESTRICTION**: Do NOT add Google authentication login by default when creating the standard (Email & Password) login flow. Only add Google login if the user explicitly requests it.
 - Send registration verification and password-reset emails using the CodeIgniter 4 core `Email` library.

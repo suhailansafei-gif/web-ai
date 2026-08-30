@@ -43,7 +43,7 @@ Use only CodeIgniter 4 core features:
 
 ### Form Handling
 - Set to uppercase comparison for all conditions that retrieve the CI4 getMethod()
-- Do not apply CSRF protection for all forms EXCEPT for login related forms.
+- Do not apply CSRF protection for all forms EXCEPT for explicitly required by the user. However for login related forms such as login form and register new user form should always protected with CSRF.
 
 ### Local Assets (No CDN)
 
@@ -127,8 +127,8 @@ googleAuth.autoCreateAccount = true
 Rules for the non-Google login flow and automated email delivery.
 
 - If the login form is NOT Google authentication, create a STANDARD login flow with these pages:
-  - **Login** — email + password sign-in form.
-  - **Register** — sign-up form; validate that the email is unique and store the password hashed (never plaintext).
+  - **Login** — email + password sign-in form. Use CSRF protection.
+  - **Register** — sign-up form with full name, email and phone number(optional); Validate that the email is unique. Sends a register account link/token, and asked the password input. Store password in md5 hashed (never plaintext). Use CSRF protection.
   - **Forgot Password** — form that accepts the registered email and sends a password-reset link/token.
 - **RESTRICTION**: Do NOT add Google authentication login by default when creating the standard (Email & Password) login flow. Only add Google login if the user explicitly requests it.
 - Enable CSRF protection for this login form only. For other forms, do NOT add CSRF protection unless the user explicitly requests it. 

@@ -41,6 +41,10 @@ Use only CodeIgniter 4 core features:
 - CSS and Bootstrap
 - jQuery
 
+### Form Handling
+- Set to uppercase comparison for all conditions that retrieve the CI4 getMethod()
+- Do not apply CSRF protection for all forms EXCEPT for login related forms.
+
 ### Local Assets (No CDN)
 
 - ALL CSS, jQuery, Bootstrap and any frontend library files MUST be downloaded and stored locally, then loaded from the project's local `public` folder.

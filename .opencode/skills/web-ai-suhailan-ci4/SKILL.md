@@ -1,6 +1,6 @@
 ---
 name: web-ai-suhailan-ci4
-description: Use when the user asks to generate, build, modify, configure, run, debug, or deploy ANY code in this project — a CodeIgniter 4 (CI4) MVC web app on XAMPP localhost with MySQL. Triggers on requests involving: controllers, models, views, routes, layouts (public/auth), forms, login/register/forgot-password, Google OAuth login, DataTables with Excel/PDF export, database tables/schema, .env settings, or any .php work here. Enforces CI4 core MVC, local assets (no CDN, DataTables from public), XAMPP localhost (`localhost/<project-folder>`), and dynamic MySQL table prefix naming (`{folder}_`).
+description: Use when the user asks to generate, build, modify, configure, run, debug, or deploy ANY code in this project - a CodeIgniter 4 (CI4) MVC web app on XAMPP localhost with MySQL. Triggers on requests involving; controllers, models, views, routes, layouts (public/auth), forms, login/register/forgot-password, Google OAuth login, DataTables with Excel/PDF export, database tables/schema, .env settings, or any .php work here. Enforces CI4 core MVC, local assets (no CDN, DataTables from public), XAMPP localhost (`localhost/<project-folder>`), and dynamic MySQL table prefix naming (`{folder}_`).
 ---
 
 # Project Rules
